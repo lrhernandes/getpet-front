@@ -71,7 +71,7 @@ export default function CadastrarClientForm(){
         handleUf();
         handleCity();
 
-        if(reMail, reWhatsapp, reFirstName, reLastName, rePassword){
+        if(reMail && reWhatsapp && reFirstName && reLastName && rePassword){
             const data = {firstName, lastName, password, email, uf, city, whatsapp, active};
             console.log(data)
             try{
