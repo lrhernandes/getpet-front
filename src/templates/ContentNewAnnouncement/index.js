@@ -25,7 +25,8 @@ export default function ContentNewAnnouncement(){
     const userId = localStorage.getItem('user-id')
 
     useEffect(() => {
-        document.getElementById('register').disabled=false 
+        document.getElementById('register').disabled=false
+        document.getElementById('cancel-register').disabled=false;
         if(!userId){
             history.push('/error');
         }else{
