@@ -34,6 +34,19 @@ html, body{
     border: 0px;
 }
 
+.purple:disabled{
+    background-color: #c2b2ca;
+    color: #E8E8E8;
+    border: 0px;
+}
+
+.negative-purple:disabled{
+    background-color: rgb(221, 221, 221);
+    color: #E8E8E8;
+    border: 1px solid #E8E8E8;
+}
+
+
 .tomato{
     background-color: tomato;
     color: #E8E8E8;

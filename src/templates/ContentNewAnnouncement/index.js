@@ -122,7 +122,8 @@ export default function ContentNewAnnouncement(){
     var reName, reDescription, reAnimalType, reAnimalSex, reAnimalSize, reAnimalAge, reUf, reCity
 
     async function handleAnnouncementRegister(e){
-        document.getElementById('register').disabled=true 
+        document.getElementById('register').disabled=true;
+        document.getElementById('cancel-register').disabled=true;
 
         // TESTA VALIDAÇÕES
         handleName();
@@ -461,7 +462,7 @@ export default function ContentNewAnnouncement(){
                         <label htmlFor="input-file-animal" className="button-charge-files"> <p><MdFileUpload/> CARREGAR ARQUIVOS</p> </label>
                         <input type="file" id="input-file-animal"/>
                     </div>
-                    <button className="negative-purple">CANCELAR</button>
+                    <button id="cancel-register" className="negative-purple">CANCELAR</button>
                     <button type="button" id="register" onClick={handleAnnouncementRegister} className="purple">CADASTRAR</button>
                 </div>
                 <div className="new-announcement-background-cat-wrapper">
