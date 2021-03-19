@@ -440,12 +440,12 @@ export default function ContentNewAnnouncement(){
                             <div className="form-new-announcement-item-address-grid">
                                 <div>
                                     <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> UF</label>
-                                    <select id="uf" value={uf} onChange={e => setUF(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}><option defaultValue >Estado</option></select>
+                                    <select id="uf" onChange={e => setUF(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}><option defaultValue >Estado</option></select>
                                     <span className="validationError" id="msguf"/>
                                 </div>
                                 <div id="second-item-address-grid">
                                     <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Cidade</label>
-                                    <select id="cidade" value={city} onChange={e => setCity(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}> <option defaultValue >Cidade</option></select>
+                                    <select id="cidade" onChange={e => setCity(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}> <option defaultValue >Cidade</option></select>
                                     <span className="validationError" id="msgcity"/>
                                 </div>
                             </div>

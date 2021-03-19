@@ -47,7 +47,7 @@ export default function CadastrarClientForm(){
             );
         }
         loadSelect();
-    });
+    },[]);
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -233,14 +233,14 @@ export default function CadastrarClientForm(){
                     
                     <div className="login-item-wrapper">
                         <label><span className="span__obrigatory__item">*</span> UF</label><br/>
-                        <select id="uf" value={uf} onChange={e => setUF(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}><option defaultValue >Estado</option></select>
+                        <select id="uf" onChange={e => setUF(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}><option defaultValue >Estado</option></select>
                         <span className="validationError" id="msguf"/>
                     </div>
 
 
                     <div className="login-item-wrapper">
                         <label><span className="span__obrigatory__item">*</span> Cidade</label><br/>
-                        <select id="cidade" value={city} onChange={e => setCity(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}> <option defaultValue >Cidade</option></select>
+                        <select id="cidade" onChange={e => setCity(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}> <option defaultValue >Cidade</option></select>
                         <span className="validationError" id="msgcity"/>
                     </div>
 
