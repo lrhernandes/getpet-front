@@ -25,6 +25,7 @@ export default function ContentNewAnnouncement(){
     const userId = localStorage.getItem('user-id')
 
     useEffect(() => {
+        document.getElementById('register').disabled=false 
         if(!userId){
             history.push('/error');
         }else{
@@ -70,7 +71,7 @@ export default function ContentNewAnnouncement(){
             }
             loadSelect()
         }
-    });
+    },[]);
 
     const handleKeyPress = (event) => {
         if(event.key === "Enter"){
@@ -121,6 +122,8 @@ export default function ContentNewAnnouncement(){
     var reName, reDescription, reAnimalType, reAnimalSex, reAnimalSize, reAnimalAge, reUf, reCity
 
     async function handleAnnouncementRegister(e){
+        document.getElementById('register').disabled=true 
+
         // TESTA VALIDAÇÕES
         handleName();
         handleDescription();
@@ -459,7 +462,7 @@ export default function ContentNewAnnouncement(){
                         <input type="file" id="input-file-animal"/>
                     </div>
                     <button className="negative-purple">CANCELAR</button>
-                    <button type="button" onClick={handleAnnouncementRegister} className="purple">CADASTRAR</button>
+                    <button type="button" id="register" onClick={handleAnnouncementRegister} className="purple">CADASTRAR</button>
                 </div>
                 <div className="new-announcement-background-cat-wrapper">
                     <div className="new-announcement-background-cat"/>
