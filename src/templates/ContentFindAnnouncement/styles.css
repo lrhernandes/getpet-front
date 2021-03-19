@@ -1,0 +1,181 @@
+.content-find-announcement{
+    margin-bottom: 30px;
+}
+
+#title-from-title-date{
+    width: 50%;
+    color: #444444;
+}
+
+.content-right{
+    margin: 30px;
+    padding-right: 20px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+
+.empty-text{
+    font-size: 15px;
+    text-transform: uppercase;
+    color: rgb(88, 88, 88);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
+
+.date-title{ 
+    display: inline-flex;
+    width: 100%;
+}
+
+.current-day{
+    font-family: Roboto;
+    text-align: right;
+    font-size: small;
+    font-weight: 100;
+    color: #646464;
+    width: 50%;
+    line-height: 50px;
+}
+
+.home-form-locate-animals{
+    width: 100%;
+}
+
+.box-home-announcements-animals{
+    height: 350px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* grid */
+.home-announcements-animals{
+    display: grid;
+    box-sizing: border-box !important;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-gap: 25px;
+    width: 100% !important;
+    position: absolute;
+    min-height: 0;  /* NEW */
+    min-width: 0;   /* NEW; needed for Firefox */
+}
+
+.home-announcements-animals li{
+    overflow: hidden;  /* NEW */
+  min-width: 0;      /* NEW; needed for Firefox */
+
+}
+
+.content-find-announcement-filtrar{
+    color: #888888;
+    font-size: 12px;
+    transition: filter 0.2s;
+    font-weight: bold;
+}
+
+.content-find-announcement-filtrar:hover{
+    filter: brightness(70%);
+}
+
+.content-bichinhos-filtrar{
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.filtrar-announcements{
+    width: 50%;
+    text-align: right;
+}
+
+
+.bichinhos-regiao{
+    color: #8100BE;
+    font-size: 12px;
+    font-weight: bold;
+    width: 50%;
+}
+
+.animal-types div div, .animal-sex div div{
+    display: flex;
+}
+
+.animal-types input, .animal-sex input{
+    height: 30px;
+}
+
+.exception{
+    padding-left: 5px;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.step1-filter form{
+    background-color: rgb(250, 250, 250);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    
+}
+
+.animal-options{
+    display: grid;
+    margin-top: 5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+.animal-options label{
+    font-weight: 200;
+}
+
+.form-subtitle{
+    color: #646464;
+    font-size: 14px;
+    padding-bottom: 10px;
+    font-weight: 500;
+}
+
+.step1-filter .button-group-filter{
+    margin-top: 20px;
+}
+
+.step1-filter .button-group-filter .purple{
+    margin-left: 20px;
+}
+
+.localizar-animais-home-form{
+    display: flex;
+}
+
+.localizar-animais-home-form select{
+    height: 40px;
+    font-size: 12px;
+    padding: 0px;
+    width: 200px;
+}
+
+.localizar-animais-home-form div{
+    margin-right: 20px;
+}
+
+#filtrar-button-box{
+    display: flex;
+    width: 150px;
+}
+
+.localizar-animais-home-form button {
+    width: 100%;
+    height: 40px;
+    transition: filter 0.2s;
+}
+
+.localizar-animais-home-form button:hover{
+    filter: brightness(90%);
+}
+
+.gambiarra iframe{
+    height: 0px;
+    width: 0px;
+    border: 0px;
+}

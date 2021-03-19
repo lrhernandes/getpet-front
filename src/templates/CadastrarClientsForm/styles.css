@@ -1,0 +1,130 @@
+input[type="text"], input[type="password"], input[type="date"], input[type="number"], select, textarea{
+    background-color: white;
+    border: 1px solid rgb(158, 158, 158);
+    border-radius: 8px;
+    padding: 15px;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    font-size: 14px !important;
+    line-height: 26px;
+    height: 50px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+input:hover, select:hover{
+    border: 1px solid #646464;
+}
+
+.cadastrar-client-form h2{
+    text-align: justify;
+    padding-bottom: 15px;
+    color: #3d3d3d;
+}
+
+label:not(.exception){
+    width: 100%;
+    text-align: left;
+    position: relative;
+    float: left;
+    font-size: 14px;
+    color: #646464;
+    margin-bottom: 5px;
+}
+
+li{
+    list-style: none;
+    position: relative;
+}
+
+.bottom-register .login-link{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.bottom-register .login-link a{
+    color: #3d3d3d;
+    transition: filter 0.2s;
+}
+
+.bottom-register .login-link a:hover{
+    filter: brightness(95%);
+}
+
+.form-group-1{
+    width: calc(50% - 20px);
+    float: left;
+}
+
+.form-group-2{
+    width: 50%;
+    float: left;
+    margin-left: 20px;
+}
+
+.form-group-3{
+    width: calc(80% - 20px);
+    float: left;
+}
+
+.form-group-4{
+    width: 20%;
+    float: left;
+    margin-left: 20px;
+}
+
+#register-step1{
+    margin-top: 30px;
+}
+
+#register-step2{
+    margin-top: 50px;
+}
+
+#register-step3{
+    margin-top: 50px;
+}
+
+.button-group-space{
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.button-group-space .purple{
+    margin-left: 10px;
+}
+
+#register-step1 #uf, #register-step1 #cidade{
+    height: 50px;
+}
+
+.next-button{
+    font-size: 12px;
+    color: blueviolet;
+    background: transparent;
+    border: 0;
+    right: 0;
+    display: flex;
+    float: right;
+}
+
+.next-button:hover, .previous-button:hover{
+    transition: filter 0.5s;
+    filter: brightness(50%);
+}
+
+.previous-button{
+    font-size: 12px;
+    color: blueviolet;
+    background: transparent;
+    border: 0;
+    right: 0;
+    display: flex;
+    float: left;
+}
+
+.login-item-wrapper{
+    margin-bottom: 20px;
+    text-align: justify;
+}

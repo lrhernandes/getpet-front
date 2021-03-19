@@ -1,0 +1,84 @@
+.announcement__item{
+    height: min-content;
+    text-align: left;
+    border-radius: 8px;
+    box-sizing: border-box;
+    overflow: hidden;  /* NEW */
+    min-width: 0;      /* NEW; needed for Firefox */
+}
+
+.announcement__item .announcement__item__description__animal-item{
+    margin: 4px;
+}
+
+.announcement__item:hover{
+    filter: brightness(95%);
+}
+.announcement__item__picture{
+    background: gray;
+    width: 100%;
+    height: 200px;
+    border-radius: 8px 8px 0px 0px;
+}
+.announcement___item___description{
+    background: white;
+    height: fit-content;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    padding: 15px;
+    border-radius: 0px 0px 8px 8px;
+} 
+
+.description-announcement-item-from-list-descript{
+    margin-top: 5px;
+    margin-bottom: -5px;
+    font-size: 12px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 800;
+}
+
+.description-announcement-item-from-list-name{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.announcement__item .name-and-fav{
+    align-items: center;
+    position: relative;
+}
+.announcement__item .name-and-fav p{
+    margin: 0px;
+}
+
+.announcement__item__description__animal__item-wrapper{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.announcement__item__description__animal-item{
+    background: #8200be33;
+    font-weight: 500;
+    padding: 5px;
+    border-radius: 5px;
+    float: left;
+    text-transform: uppercase;
+    font-size: 12px;
+    position: relative;
+    display: flex;
+    width: min-content;
+    margin: 10px;
+    
+    font-size: 12px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 800;
+}
+
+.announcement__item__description__animal-item svg{
+    margin-right: 5px;
+}

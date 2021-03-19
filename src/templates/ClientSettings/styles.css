@@ -1,0 +1,32 @@
+.client-settings{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 100%;
+    position: relative;
+    margin-left: 20px;
+    height: 100%;
+}
+
+.client-settings-content-title-content{
+    height: 100%;
+}
+
+.client-settings img{
+    position: absolute;
+}
+
+.client-settings-content-wrapper{
+    background-color: whitesmoke;
+    border-radius: 8px;
+    margin-right: 80px;
+    margin-top: 50px;
+    position: relative;
+    padding: 30px;
+    float: bottom;
+    height: 400px;
+}
+
+.client-settings .default-page-content-wrapper{
+    overflow-y: hidden;
+    background-color:#ffffff;
+}

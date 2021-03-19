@@ -1,0 +1,56 @@
+form #h2{
+    font-size: 24px;
+    margin: 10px 0px;
+    color: #3d3d3d;
+}
+.h4{
+    color: #646464;
+    font-weight: 300;
+    padding-bottom: 18px;
+    float: left;
+}
+
+.content-left-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-login{
+    width: 100%;
+}
+
+.form-login .button-group-space{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.form-login .button-group-space button.purple{
+    margin: 0;
+}
+
+
+.bottom-register{
+    margin-top: 15px;
+    text-align: center;
+}
+
+.bottom-register .register-link{
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.bottom-register .register-link a{
+    color: #3d3d3d;
+    transition: filter 0.2s;
+}
+
+.bottom-register .register-link a:hover{
+    filter: brightness(95%);
+}
+
+.login-item-wrapper{
+    margin-bottom: 10px;
+}

@@ -1,0 +1,31 @@
+.content-client-left-menu{
+    text-align: center;
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.left-menu-item-center{
+    line-height: 60px;
+}
+
+.content-client-left-menu ul{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    text-align: center;
+}
+
+.content-client-left-menu a{
+    color: #E8E8E8;
+}
+
+#logout{
+    margin-bottom: 20px;
+}
+
+#icon img{
+    width: 20px;
+    margin-top: 20px;
+}

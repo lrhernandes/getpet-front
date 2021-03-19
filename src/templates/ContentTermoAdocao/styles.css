@@ -1,0 +1,24 @@
+.title-termo-adocao{
+    width: 100%;
+    text-align: left;
+    position: relative;
+    float: left;
+    font-size: 14px;
+    color: #646464;
+    margin-bottom: 5px;
+}
+
+.subtitle-termo-adocao{
+    font-size: 14px;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: justify;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: lighter;
+    color: #646464;
+}
+
+.content-termo-adocao .default-page-content-wrapper{
+    padding: 20px 40px 40px 0px;
+}

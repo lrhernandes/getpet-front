@@ -1,0 +1,33 @@
+.section-content1-announcement-sections {
+    height: calc(70vh - 80px);
+}
+
+.announcement-sections .subtitle-default-page{
+    margin-bottom: 20px;
+}
+
+.announcement-sections .title-default-page{
+    margin-bottom: 10px;
+    line-height: 20px;
+}
+
+.announcement-sections-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: calc(70vh - 80px);
+}
+
+.announcement-sections section{
+    padding: 10px;
+    height: 100%;
+}
+
+#announcement-page .default-page-content-wrapper{
+    padding: 40px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.section-gallery-announcement-sections{
+    height: calc(70vh - 80px);
+}

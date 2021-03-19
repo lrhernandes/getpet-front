@@ -1,0 +1,12 @@
+#curls-new-announcement{
+    right: 0;
+    top: 0;
+    height: 80%;
+}
+
+.new-announcement #background-new-announcement-cat{
+    position: absolute;
+    height: 300px;
+    bottom: 0;
+    right: 20px;
+}

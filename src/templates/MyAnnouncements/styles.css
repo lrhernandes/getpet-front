@@ -1,0 +1,53 @@
+.my-announcements{
+    margin: 30px;
+    padding-right: 20px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.my-announcements img{
+    position: absolute;
+}
+
+#elipse7-my-announcements{
+    bottom: 0;
+}
+
+#dots-my-announcements{
+    right: 0;
+    top: 10px;
+}
+
+#elipse-my-announcements{
+    bottom: 0;
+}
+
+.content-my-announcements{
+    height: 100%;
+    position: relative;
+}
+
+.my-announcements button{
+    width: 200px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.content-itens-my-announcements{
+    height: 350px;
+    overflow: auto;
+    margin-right: 50px;
+}
+
+/* scroll */
+.content-itens-my-announcements::-webkit-scrollbar {
+    width: 0.4em;
+}
+.content-itens-my-announcements::-webkit-scrollbar-track {
+    background: #cecdcd;
+    border-radius: 8px;
+}
+.content-itens-my-announcements::-webkit-scrollbar-thumb {
+    background-color: #b4b4b4;
+    border-radius: 8px;
+}	

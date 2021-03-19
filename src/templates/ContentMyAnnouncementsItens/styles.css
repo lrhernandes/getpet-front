@@ -1,0 +1,17 @@
+.content-my-announcements-itens{
+    margin-right: 10px;
+}
+
+.content-my-announcements-itens ul{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 25px;
+    margin-right: 15px;
+    width: 100%;
+}
+.content-my-announcements-itens li{
+    background-color: #F1F1F1;
+    border-radius: 8px;
+    box-sizing: border-box;
+    height: 150px;
+}

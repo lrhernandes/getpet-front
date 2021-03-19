@@ -1,0 +1,27 @@
+.form-login{
+    height: min-content;
+}
+
+.content-left-login{
+    background-size: auto 100%;
+    height: 100%;
+    border-radius: 33px 0px 0px 33px;
+    padding: 50px;
+    color: rgba(0, 0, 0, 0.49);
+    font-weight: bold;
+    font-size: 20px;
+    position: relative;
+}
+
+.content-left-login a{
+    color: #818181;
+    transition: filter 0.2s;
+}
+
+.content-right-login{
+    background-image: url(../../assets/black_cat.jpg);
+    border-radius: 0px 33px 33px 0px;
+    height: 100%;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}

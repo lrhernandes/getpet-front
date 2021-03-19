@@ -1,0 +1,325 @@
+
+
+#arredondar-first-radio{
+    border-radius: 8px 0px 0px 8px;
+}
+#arredondar-last-radio{
+    border-radius: 0px 8px 8px 0px;
+    border-right: 1px solid rgb(160, 160, 160);
+}
+
+/* NOME */
+#form-new-announcement-item-name{
+    margin-bottom: 20px;
+}
+
+/* TEXT AREA */
+.form-new-announcement-item textarea{
+    height: 120px;
+    resize: vertical;
+    max-height: 300px;
+    min-height: 120px;
+    margin-bottom: 40px;
+}
+
+/* TIPO ANIMAL */
+.form-new-announcement-item-type-label img{
+    height: 70px;
+    margin: auto;
+    position: relative;
+    margin-bottom: 10px;
+}
+.form-new-announcement-item-size-content-item input[type=radio], .form-new-announcement-item-type-content-item input[type=radio], .form-new-announcement-item-sex-content-item input[type=radio], .form-new-announcement-item-age-content-item input[type=radio], #form-new-announcement-item-pictures input[type=file]{
+    height: 0;
+    width: 0;
+}
+.form-new-announcement-item-type-grid{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    border: 2px solid transparent;
+}
+.form-new-announcement-item-type-label{
+    cursor: pointer;
+    background-color: #ffffff;
+    border-left: 1px solid rgb(160, 160, 160);
+    border-top: 1px solid rgb(160, 160, 160);
+    border-bottom: 1px solid rgb(160, 160, 160);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+}
+.form-new-announcement-item-type-label p{
+    padding-bottom: 14px;
+    font-size: 16px;
+    color: #8100BE;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+}
+.form-new-announcement-item input[type=radio]:hover + label{
+    transition: filter 0.2s;
+    filter: brightness(90%);
+}
+/* GRID SEX AGE */
+.content-item-sex-age-grid{
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    border: 2px solid transparent;
+}
+
+/* SEX */
+.form-new-announcement-item-sex-label img{
+    height: 40px;
+    margin: auto;
+    position: relative;
+    margin-bottom: 10px;
+}
+.form-new-announcement-item-sex-label{
+    cursor: pointer;
+    background-color: #ffffff;
+    border-left: 1px solid rgb(160, 160, 160);
+    border-top: 1px solid rgb(160, 160, 160);
+    border-bottom: 1px solid rgb(160, 160, 160);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+}
+.form-new-announcement-item-sex-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: 2px solid transparent;
+    height: 100%;
+}
+.form-new-announcement-item-sex-label p{
+    padding-bottom: 15px;
+    font-size: 12px;
+    color: #8100BE;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+}
+.form-new-announcement-item-sex-content-item input[type=radio]:checked + label,
+.form-new-announcement-item-age-content-item input[type=radio]:checked + label,
+.form-new-announcement-item-size-content-item input[type=radio]:checked + label,
+.form-new-announcement-item-type-content-item input[type=radio]:checked + label{
+    filter: brightness(90%);
+}
+/* AGE */
+#form-new-announcement-item-age{
+    height: 100%;
+}
+.form-new-announcement-item-age-content-item{
+    height: 100%;
+}
+#form-new-announcement-item-age{
+    margin-left: 5px;
+}
+.form-new-announcement-item-age-label img{
+    height: 40px;
+    margin: auto;
+    position: relative;
+    margin-bottom: 10px;
+}
+.form-new-announcement-item-age-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: 2px solid transparent;
+    position: relative;
+}
+.form-new-announcement-item-age-label{
+    cursor: pointer;
+    background-color: #ffffff;
+    border-left: 1px solid rgb(160, 160, 160);
+    border-top: 1px solid rgb(160, 160, 160);
+    border-bottom: 1px solid rgb(160, 160, 160);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+}
+.form-new-announcement-item-age-label p{
+    font-size: 12px;
+    color: #8100BE;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+
+/* SIZE */
+#form-new-announcement-item-size{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.form-new-announcement-item-size-label{
+    cursor: pointer;
+    background-color: #ffffff;
+    border-left: 1px solid rgb(160, 160, 160);
+    border-top: 1px solid rgb(160, 160, 160);
+    border-bottom: 1px solid rgb(160, 160, 160);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8px;
+}
+.form-new-announcement-item-size-label p{
+    padding-top: 15px;
+    padding-bottom: 18px;
+    font-size: 12px;
+    color: #8100BE;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+}
+.form-new-announcement-item-size-grid{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border: 2px solid transparent;
+}
+
+/* HEALTH */
+#form-new-announcement-item-health{
+    margin-top: 40px;
+}
+.form-new-announcement-item-health-content-item{
+    display: flex;
+}
+.form-new-announcement-item-health-content-item input{
+    margin: auto;
+}
+.form-new-announcement-item-health-label p{
+    display: flex;
+    float: left;
+    margin: auto;
+    line-height: 20px;
+    padding-bottom: 0px;
+    font-weight: 300;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.form-new-announcement-item-health-icon{
+    margin-left: 5px;
+    color: #9e9e9e;
+    cursor: help;
+}
+.form-new-announcement-description-special-label{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.form-new-announcement-description-special-textarea{
+    height: 100px;
+    resize: vertical;
+    max-height: 200px;
+    min-height: 100px;
+}
+
+/* PICTURES */
+#form-new-announcement-item-pictures input[type=file]:hover{
+    border: 0;
+}
+.button-charge-files p{
+    width: 200px;
+    cursor: pointer;
+    background-color: #646464;
+    color: #FFFFFF;
+    font-size: 14px;
+    border: 0px;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+/* ENDEREÇO */
+#form-new-announcement-item-address{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#form-new-announcement-item-address select, #form-new-announcement-item-address input{
+    height: 50px;
+}
+.form-new-announcement-item-address-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 2px solid transparent;
+}
+
+.form-new-announcement-item-address-second-grid{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    border: 2px solid transparent;
+}
+#second-item-address-grid{
+    margin-left: 10px;
+}
+#third-item-address-grid{
+    margin-right: 10px;
+}
+.form-new-announcement-item-address-grid label{
+    margin-bottom: 5px;
+}
+
+
+.content-buttons-new-announcement{
+    float: right;
+}
+
+.default-page-content-wrapper .purple{
+    margin-left: 10px;
+}
+
+.form-new-announcement-item label .form-label-new-announcement {
+    border: 2px solid orange;
+    color: red;
+    margin-bottom: 10px;
+}
+.content-new-announcement .default-page-content-wrapper{
+    margin-right: 0px;
+    width: 60%;
+    padding: 20px 40px 40px 0px;
+}
+.list-temperament{
+    width: 100%;
+    overflow: hidden;
+}
+
+.list-temperament .list-item-temperament{
+    border: 1px solid #8100BE;
+    padding: 10px;
+    border-radius: 8px;
+    margin-right: 8px;
+    margin-bottom: 5px;
+    height: 40px;
+    line-height: 20px;
+    background-color: #8200be17;
+    font-size: 12px;
+    color: #8100BE;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+    text-transform: uppercase;
+    float: left;
+}
+
+.list-temperament .list-item-temperament svg{
+    margin-left: 5px;
+    cursor: pointer;    
+}
+
+.new-announcement-background-cat{
+    background-image: url('../../assets/cat6.svg');
+    height: 70vh;
+    background-size: 50vh;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.content-new-announcement .new-announcement-background-cat-wrapper{
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    width: 40%;
+    height: 70vh;
+    background-image: url('../../assets/Ellipse\ 7.png');
+    background-size: 60vh;
+    background-repeat: no-repeat;
+    background-position: center;
+}

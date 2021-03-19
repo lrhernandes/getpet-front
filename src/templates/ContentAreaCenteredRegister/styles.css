@@ -1,0 +1,43 @@
+.content-area-centered section:nth-of-type(2){
+    display: flex;
+    flex-direction: column;
+}
+
+.content-right-register{
+    height: calc(70vh - 60px);
+}
+
+.camada-fix{
+    height: calc(100% - 60px) !important;
+    overflow-y: scroll;
+    margin-right: 30px;
+}
+
+/* scroll */
+::-webkit-scrollbar {
+    width: 0.4em;
+}
+::-webkit-scrollbar-track {
+    background: #cecdcd;
+    border-radius: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #b4b4b4;
+    border-radius: 8px;
+}	
+
+.camada-fix .bottom-register{
+    width: 80%;
+    margin: 0px;
+    margin-top: 5px;
+}
+
+.form-register{
+    width: 80%;
+    height:auto;
+}
+
+.cadastrar-client-form{
+    padding-right: 10px;
+    height:auto;
+}

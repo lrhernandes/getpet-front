@@ -1,0 +1,22 @@
+
+.inicial__form{
+    width: 60vw;
+    margin: auto;
+    margin-top: 20px;
+}
+.inicial__form button.purple{
+    margin: 30px 0px 0px 0px;
+}
+.inicial__form__select-item{
+    padding-top: 20px;
+    padding-bottom: 0px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.inicial__form__select-item select{
+    margin: 0px;
+    height: 50px;
+    appearance: none;
+    padding: 10px;
+    cursor: pointer;
+}

@@ -1,0 +1,139 @@
+.modal-adopt{
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 60px;
+    height: 100%;
+    position: relative;
+}
+
+.modal-adopt-image-wrapper{
+    background-image: url('../../assets/cat1111.svg');
+    background-size: 230px;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding: 0;
+}
+
+.modal-adopt-title{
+    font-size: 16px;
+    color: #8100BE;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.modal-adopt-subtitle{
+    margin-top: 8px;
+    font-size: 14px;
+    font-family: 'Quicksand', sans-serif;
+    margin-bottom: 10px;
+    font-weight: 400;
+    color: rgb(44, 44, 44);
+}
+
+.modal-adopt-content{
+    color: rgb(47, 47, 47);
+    font-size: 14px;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.modal-adopt-wrapper{
+    border-radius: 8px;
+    width: 100%;
+    padding: 20px;
+    height: 100%;
+    background-color: white;
+    box-shadow: 5px 10px 10px #e2e2e2;
+    display: grid;
+    grid-template-columns: 65% 35%;
+}
+
+.modal-adopt button{
+    text-transform: uppercase;
+}
+
+.modal-adoption-file{
+    color: black;
+}
+
+.modal-adoption-file:hover{
+    cursor: pointer;
+    filter: brightness(90%);
+    transition: filter 0.2s;
+}
+
+.modal-adoption-file .icon-modal-adoption-file{
+    margin: 10px;
+}
+
+.modal-adoption-contact{
+    background-color: rgb(199, 199, 199);
+    border-radius: 8px;
+    width: 40%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    box-shadow: 5px 10px 10px #e2e2e2;
+    float: left;
+    margin-right: 13px;
+    display: table;
+}
+
+.modal-adoption-file{
+    background-color: rgb(199, 199, 199);
+    border-radius: 8px;
+    width: 60%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    box-shadow: 5px 10px 10px #e2e2e2;
+    float: left;
+    margin-right: 13px;
+    display: table;
+}
+
+.modal-adoption-file p{
+    width: fit-content;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.none-link{
+    width: min-content;
+    margin: auto;
+    flex-direction: row;
+    text-decoration: none;
+    color: black;
+}
+
+.none-link:visited{
+    color: black;
+}
+
+#second-modal-title{
+    margin-top: 50px;
+}
+
+.icon-modal-adoption-contact{
+    margin-top: 10px;
+    margin-right: 3px;
+    margin-bottom: 10px;
+}
+
+.modal-adopt-contact-wrappper{
+    height: 50px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.modal-adoption-contact:hover{
+    cursor: pointer;
+    filter: brightness(90%);
+    transition: filter 0.2s;
+}

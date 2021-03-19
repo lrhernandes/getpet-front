@@ -1,0 +1,48 @@
+.menu-horizontal{
+    padding: 20px 40px 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    line-height: 30px;
+}
+
+.menu-right{
+    float: right;
+    display: flex;
+}
+
+.menu-horizontal h1{
+    font-size: 30px;
+    line-height: 35px;
+}
+
+.menu-right a .menu-link{
+    color: black;
+    text-decoration: none;
+}
+
+.menu-right a h2{
+    color: black;
+    font-weight: lighter;
+    font-size: 18px;
+    text-align: center;
+    line-height: 30px;
+    transition: filter 0.2s;
+    width: 150px;
+    line-height: 35px;
+}
+
+.menu-right a h2:hover{
+    text-decoration: none; 
+    font-weight: 500;
+    color: #646464;
+}
+
+.menu-right a{
+    line-height: 30px;
+}
+
+.menu-right a button{
+    height: 100%;
+    font-weight: lighter;
+    margin-left: 50px;
+}

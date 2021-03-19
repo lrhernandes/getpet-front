@@ -1,0 +1,80 @@
+.announcement-item-from-list{
+    display: flex;
+    float: left;
+    height: 100%;
+    transform: filter(0.2);
+}
+
+.announcement-item-from-list:hover{
+    filter: brightness(90%);
+}
+
+.image-announcement-item-from-list{
+    height: 100%;
+    width: 45%;
+    position: relative;
+    background-color: gray;
+    border-radius: 8px 0px 0px 8px;
+}
+
+.description-announcement-item-from-list{
+    height: 100%;
+    width: 55%;
+    border-radius: 0px 8px 8px 0px;
+    padding: 15px;
+    background-color: rgb(255, 255, 255);
+}
+
+.caracteristicas-announcement img{
+    height: 20px;
+    position: relative;
+    margin-top: 5px;
+}
+.caracteristicas-announcement p{
+    font-size: 10px;
+    color: rgb(88, 88, 88);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.caracteristicas-announcement{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.caracteristicas-announcement div{
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.description-announcement-item-from-list-name{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size:16px;
+    line-height: 24px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: rgb(97, 97, 97);
+}
+
+.description-announcement-item-from-list-descript{
+    font-size: 14px;
+    font-weight: 500;
+    color: gray;
+}
+
+.favorite-announcement-item-from-list-icon{
+    float: right;
+}
+
+.content-favorite-icon-announcement-item-from-list{
+    width: 25px;
+}
+
+.name-and-fav{
+    display: flex;
+    justify-content: space-between;
+}
+

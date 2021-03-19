@@ -1,0 +1,31 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+.image-gallery-content:not(.fullscreen) {
+    height: calc(70vh - 80px);
+}
+
+.image-gallery-content:not(.fullscreen) .image-gallery-image {
+    height: calc(70vh - 160px);
+}
+
+.image-gallery-thumbnails-wrapper img{
+    height: 60px;
+}
+
+.image-gallery-image img {
+    max-height: 400px;
+}
+
+.thumbnail{
+    width: 18%;
+}
+
+.image-gallery-fullscreen-button svg,
+.image-gallery-play-button svg{
+    height: 20px;
+}
+
+.image-gallery-left-nav .image-gallery-svg,
+.image-gallery-right-nav .image-gallery-svg{
+    height: 70px;
+}

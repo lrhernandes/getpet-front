@@ -1,0 +1,107 @@
+.center-page{
+    background-color: white;
+    height: 100vh;
+}
+
+.center-page img{
+    position: absolute;
+}
+
+#elipse5{
+    right: 0px;
+    height: 300px;
+    width: 400px;
+}
+
+#elipse6{
+    height: 350px;
+    width: 500px;
+}
+
+#dots3{
+    right: 0px;
+    bottom: 0px;
+    height: 200px;
+}
+
+#curls{
+    height: 300px;
+    width: 600px;
+    bottom: 0px;
+}
+
+.camada{
+    height: 100%;
+    align-items: center;
+    display: flex;
+}
+
+.content-area-centered{
+    background-color: #fafafa;
+    height: 70vh;
+    width: 70vw;
+    border-radius: 33px;
+    position: relative;
+    margin: auto;
+    vertical-align: middle;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+
+.content-area-centered section{
+    width: 100%;
+    height: 100%;
+}
+
+.content-area-centered .content-left-register{
+    background-image: url('../../assets/gray_dog.jpg');
+    background-size: auto 100%;
+    height: 100%;
+    border-radius: 33px 0px 0px 33px;
+    padding: 20px 30px;
+    color: rgba(0, 0, 0, 0.49);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.content-area-centered .content-left-register a,
+.x-icon a,
+.content-area-centered div .camada-fix a p{
+    color: #818181;
+    transition: filter 0.2s;
+}
+
+.content-area-centered .content-left-register a:hover, 
+.x-icon a:hover,
+.content-area-centered div .camada-fix a p:hover{
+    filter: brightness(50%);
+}
+
+.content-area-centered div .content-right-register{
+    align-items: center;
+    height: 100%;
+    text-align: center;
+}
+
+.content-area-centered div .camada-fix{
+    text-align: center;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.x-icon{
+    position: relative;
+    text-align: right;
+    padding: 20px;
+}
+
+.content-area-centered div .camada-fix a p{
+    color: #646464;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 2vh;
+    transition: filter 0.2s;
+}

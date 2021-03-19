@@ -1,0 +1,16 @@
+.liked-announcements{
+    margin: 30px;
+    padding-right: 20px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.liked-announcements img{
+    position: absolute;
+}
+
+.liked-announcements button{
+    width: 200px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}

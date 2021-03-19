@@ -1,0 +1,42 @@
+.content-left-about{
+    height: 100%;
+    background: url(../../assets/Ellipse\ 7.png);
+    background-size: 350px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.sobrepor{
+    height: 100%;
+    position: relative;
+    background-image: url(../../assets/cat1.svg);
+    background-size: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.content-right-about{
+    color: #646464;
+    height: 100%;
+    position: relative;
+    text-align: justify;
+}
+
+#purpleabout{
+    margin-top: 30px;
+    color: #8100BE;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.content-right-about h1 + p{
+    font-weight: 200;
+    padding-right: 60px;
+}
+
+.content-right-about h1{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 40px;
+    font-weight: bold;
+}
