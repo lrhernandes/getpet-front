@@ -172,7 +172,7 @@ export default function ContentFindAnnouncement(){
                             )}
                         </ul>
                         {announcements.length === 0 && (
-                            <p className="empty-text">Ops, parece que não existem anúncios disponpiveis :(</p>
+                            <p className="empty-text">Ops, parece que não existem anúncios disponíveis :(</p>
                         )}
                     </div>
                     </div>
