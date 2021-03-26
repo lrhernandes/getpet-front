@@ -127,45 +127,46 @@ export default function ContentNewAnnouncement(){
         document.getElementById('cancel-register').disabled=true;
 
         handleUploadImg();
-        // // TESTA VALIDAÇÕES
-        // handleName();
-        // handleDescription();
-        // handleType();
-        // handleSex();
-        // handleSize();
-        // handleAge();
-        // handleCity();
-        // handleUf();
+        //TESTA VALIDAÇÕES
+        handleName();
+        handleDescription();
+        handleType();
+        handleSex();
+        handleSize();
+        handleAge();
+        handleCity();
+        handleUf();
 
-        // // PEGA OS DADOS DO STATE
-        // const type = animalType;
-        // const size = animalSize;
-        // const sex = animalSex;
-        // const age = animalAge;
-        // var temperament = '';
-        // for (var i = 0; i < items.length; i++) {
-        //     i< items.length-1 ? temperament = temperament + items[i].value + ', ' : temperament = temperament + items[i].value;
-        // }
-        // const data = { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, userId};
-        // if(reName && reDescription && reAnimalType && reAnimalSex && reAnimalSize && reAnimalAge && reCity && reUf){
-        //     console.log("tentando inserir")
-        //     try{
-        //         const response = await api.post('/announcements', data);
-        //         if(response){
-        //             history.push('/myannouncements');
-        //         }
-        //     }catch(err){
-        //         alert(err);
-        //     }
-        // }
-        // console.log(data)
+        // PEGA OS DADOS DO STATE
+        const type = animalType;
+        const size = animalSize;
+        const sex = animalSex;
+        const age = animalAge;
+        var temperament = '';
+        for (var i = 0; i < items.length; i++) {
+            i< items.length-1 ? temperament = temperament + items[i].value + ', ' : temperament = temperament + items[i].value;
+        }
+        const data = { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, userId};
+        if(reName && reDescription && reAnimalType && reAnimalSex && reAnimalSize && reAnimalAge && reCity && reUf){
+            try{
+                const response = await api.post('/announcements', data).then(response => response.data);
+                if(response){
+                    history.push('/myannouncements');
+                    handleUploadImg(response);
+                }else{
+                    alert("Não foi possível cadastrar anúncio")
+                }
+            }catch(err){
+                alert(err);
+            }
+        }
+        console.log(data)
     }
 
-    function handleUploadImg(){
+    function handleUploadImg(id){
         for (var i=0; i<files.length; i++){
             const data = new FormData() 
             data.append('file', files[i])
-            const id = '02baf170-6575-4f5d-ac7c-f990538f5571';
             insertPicture(id, data)
             console.log(files[i])
         }
@@ -465,11 +466,11 @@ export default function ContentNewAnnouncement(){
 
                     <div className="form-new-announcement-item" id="form-new-announcement-item-pictures">
                         <label className="form-label-new-announcement">Fotos</label>
-                        <p className="subtitle-seccion">Selecione até 5 fotos do seu bichinho</p>
+                        <p className="subtitle-seccion">Selecione as fotos do seu bichinho</p>
                         
                         <form encType="multipart/form-data">
                             <label htmlFor="input-file-animal" className="button-charge-files"> <p><MdFileUpload/> CARREGAR ARQUIVOS</p> </label>
-                            <input type="file" name="file" multiple id="input-file-animal" onChange={ (e) => setFiles(e.target.files) }/>
+                            <input type="file" name="file" accept="image/png, image/jpeg, image/pjpeg" multiple id="input-file-animal" onChange={ (e) => setFiles(e.target.files) }/>
                         </form>
                         {files.length>0 && (
                             <div className="files_message">
@@ -477,8 +478,10 @@ export default function ContentNewAnnouncement(){
                             </div>
                         )}
                     </div>
-                    <button id="cancel-register" className="negative-purple">CANCELAR</button>
-                    <button type="button" id="register" onClick={handleAnnouncementRegister} className="purple">CADASTRAR</button>
+                    <div className="button-wrapper-insert-announcement">
+                        <button id="cancel-register" className="negative-purple">CANCELAR</button>
+                        <button type="button" id="register" onClick={handleAnnouncementRegister} className="purple">CADASTRAR</button>
+                    </div>
                 </div>
                 <div className="new-announcement-background-cat-wrapper">
                     <div className="new-announcement-background-cat"/>

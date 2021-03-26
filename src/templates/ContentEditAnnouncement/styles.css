@@ -12,6 +12,9 @@
 #form-new-announcement-item-name{
     margin-bottom: 20px;
 }
+.button-wrapper-insert-announcement{
+    margin-top: 60px;
+}
 
 /* TEXT AREA */
 .form-new-announcement-item textarea{

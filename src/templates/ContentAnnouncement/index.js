@@ -36,7 +36,6 @@ export default function ContentAnnouncement({ann}){
         function handleTemperament() {
             var str = `${ann.temperament}`;
             var resultado = str.split(",");
-            console.log(resultado);
             return resultado;
         }
         const result = handleTemperament();

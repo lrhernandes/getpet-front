@@ -19,7 +19,6 @@ export default function Announcement(){
             try{
                 const ann = await api.get(`/announcement/${id}`);
                 setAnnouncement(ann.data);
-                console.log(announcement)
             }catch(err){
                 alert(err);
             }
@@ -34,7 +33,7 @@ export default function Announcement(){
             <div className="default-page-content-wrapper">
                 <div className="announcement-sections-grid">
                     <section className="section-gallery-announcement-sections">
-                        <Gallery/>
+                        <Gallery ann={announcement}/>
                     </section>
                     <section className="section-content1-announcement-sections">
                         <ContentAnnouncement ann={announcement}/>

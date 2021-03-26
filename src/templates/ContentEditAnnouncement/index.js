@@ -26,6 +26,7 @@ export default function ContentNewAnnouncement(){
     const [itemsCpy, setItemsCpy] = useState([]);
     const [errorMessages, setErrorMessages] = useState([]);
     const [checked, setChecked] = useState(false);
+    const [pic, setPic] = useState([])
     const [announcement, setAnnouncement] = useState([]);
 
     useEffect(() => {
@@ -71,6 +72,24 @@ export default function ContentNewAnnouncement(){
         }
         loadSelect();
     },[]);
+
+    useEffect(()=>{
+        async function getPictures () {
+            const response = await api.get(`/img/${id}`).then(response => response.data);
+            if(response.length>0){  
+              var data = [];
+              for(var i=0; i < response.length; i++){
+                data.push({
+                  original: response[i].url,
+                  thumbnail: response[i].url,
+                  thumbnailClass: 'thumbnail'
+                })
+              }
+              setPic(data)
+            }
+          }
+          getPictures();
+    },[])
 
     const handleKeyPress = (event) => {
         if(event.key === "Enter"){
@@ -128,20 +147,32 @@ export default function ContentNewAnnouncement(){
         const sex = animalSex;
         const age = animalAge;
         var temperament = "";
-        console.log(items)
-        console.log(itemsCpy)
+
         for (var i = 0; i < items.length; i++) {
             i <= items.length-1 ? temperament = temperament + items[i].value + ', ' : temperament = temperament + items[i].value;
         }
+        
         if (reName && reDescription && reSpecial){
             const data = { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, user};
             try{
-                const response = await api.put(`/announcements/settings/${id}/${user}`, data).then(()=>{
-                    alert("Edições salvas :)");
-                    history.push(`/announcement/${id}`);
+                await api.put(`/announcements/settings/${id}/${user}`, data).then(()=>{
+                    if(getPicture()){
+                        deletePicture()
+                    }
+                    //console.log(getPicture());
+                    handleUploadImg().then(()=>{
+                        alert("Edições salvas :)");
+                        history.push(`/announcement/${id}`);
+                    }).catch((err)=>{
+                        alert("Algo deu errado na atualização das imagens :(");
+                        history.push(`/announcement/${id}`);
+                        console.log(err)
+                    })
                 });
             }catch(err){
-                alert(err);
+                alert("Algo deu errado na atualização do anúncio :(");
+                history.push(`/announcement/${id}`);
+                console.log(err)
             }
         } else {
             alert("Não foi possível editar anúncio :(");
@@ -193,6 +224,32 @@ export default function ContentNewAnnouncement(){
     function handleIsSpecial(e){
         setChecked(!checked);
         setIsSpecial(e.target.checked);
+    }
+
+    function handleUploadImg(){
+        for (var i=0; i<pic.length; i++){
+            console.log(pic)
+            const data = new FormData() 
+            data.append('file', pic[i])
+            insertPicture(id, data)
+            console.log(pic[i])
+        }
+    }
+    async function insertPicture(data) {
+        await api.post(`/img/${id}`, data);
+    }
+    
+    async function deletePicture() {
+        await api.delete(`/img/${id}`);
+    }
+
+    async function getPicture(){
+        const response = await api.get(`/img/${id}`).then(response => response.data);
+        if(response.length>0){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     //VALIDAÇÕES
@@ -417,12 +474,24 @@ export default function ContentNewAnnouncement(){
                 </div>
                 <div className="form-new-announcement-item" id="form-new-announcement-item-pictures">
                     <label className="form-label-new-announcement">Fotos</label>
-                    <p className="subtitle-seccion">Selecione até 5 fotos do seu bichinho</p>
-                    <label htmlFor="input-file-animal" className="button-charge-files"> <p><MdFileUpload/> CARREGAR ARQUIVOS</p> </label>
-                    <input type="file" id="input-file-animal"/>
+                    <p className="subtitle-seccion">Selecione as fotos do seu bichinho</p>
+                    
+                    <form encType="multipart/form-data">
+                        <label htmlFor="input-file-animal" className="button-charge-files"> <p><MdFileUpload/> CARREGAR ARQUIVOS</p> </label>
+                        <input type="file" name="file" accept="image/png, image/jpeg, image/pjpeg" multiple id="input-file-animal" onChange={ (e) => {
+                            setPic(e.target.files)
+                        }}/>
+                    </form>
+                    {pic.length>0 && (
+                        <div className="files_message">
+                            {pic.length} arquivos selecionados
+                        </div>
+                    )}
                 </div>
-                <button className="negative-purple" onClick={handleCancelEdit}>CANCELAR</button>
-                <button type="button" onClick={handleAnnouncementEdit} className="purple">SALVAR</button>
+                <div className="button-wrapper-insert-announcement">
+                    <button className="negative-purple" onClick={handleCancelEdit}>CANCELAR</button>
+                    <button type="button" onClick={handleAnnouncementEdit} className="purple">SALVAR</button>
+                </div>
             </div>
             <div className="new-announcement-background-cat-wrapper">
                 <div className="new-announcement-background-cat"/>

@@ -10,9 +10,12 @@
 
 .files_message{
     margin-top: 10px;
-    margin-bottom: 30px;
     font-size: 11px;
     color: #646464;
+}
+
+.button-wrapper-insert-announcement{
+    margin-top: 60px;
 }
 
 /* NOME */
