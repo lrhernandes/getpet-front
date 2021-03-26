@@ -9,12 +9,13 @@ import reptil from '../../assets/animais (1).svg';
 import hamster from '../../assets/hamster.svg';
 import equino from '../../assets/cavalo.svg';
 import outros from '../../assets/animais-de-estimacao.svg';
-import f from '../../assets/femea.svg'
-import m from '../../assets/fluido-de-genero.svg'
-import u from '../../assets/simbolo-sexual.svg'
-import ninho from '../../assets/ninho.svg'
-import pintinho from '../../assets/pintinho.svg'
-import galinha from '../../assets/galinha.svg'
+import f from '../../assets/femea.svg';
+import m from '../../assets/fluido-de-genero.svg';
+import u from '../../assets/simbolo-sexual.svg';
+import ninho from '../../assets/ninho.svg';
+import pintinho from '../../assets/pintinho.svg';
+import galinha from '../../assets/galinha.svg';
+import filesize from 'filesize'
 
 export default function ContentNewAnnouncement(){
     const history = useHistory();
@@ -22,7 +23,22 @@ export default function ContentNewAnnouncement(){
     const [itemsCpy, setItemsCpy] = useState([]);
     const [errorMessages, setErrorMessages] = useState([]);
     const [checked, setChecked] = useState(false);
-    const userId = localStorage.getItem('user-id')
+    const userId = localStorage.getItem('user-id');
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [animalType, setAnimalType] = useState('');
+    const [animalSize, setAnimalSize] = useState('');
+    const [animalSex, setAnimalSex] = useState('');
+    const [animalAge, setAnimalAge] = useState('');
+    const [uf, setUF] = useState('');
+    const [city, setCity] = useState('');
+    const [castrated, setCastrated] = useState(false);
+    const [vaccinated, setVaccinated] = useState(false);
+    const [dewormed, setDewormed] = useState(false);
+    const [isSpecial, setIsSpecial] = useState(false);
+    const [specialDescription, setSpecialDescription] = useState('');
+    const [files, setFiles] = useState([]);
+    var reName, reDescription, reAnimalType, reAnimalSex, reAnimalSize, reAnimalAge, reUf, reCity;
 
     useEffect(() => {
         document.getElementById('register').disabled=false
@@ -106,65 +122,62 @@ export default function ContentNewAnnouncement(){
         setItems(items)
     }
 
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [animalType, setAnimalType] = useState('');
-    const [animalSize, setAnimalSize] = useState('');
-    const [animalSex, setAnimalSex] = useState('');
-    const [animalAge, setAnimalAge] = useState('');
-    const [uf, setUF] = useState('');
-    const [city, setCity] = useState('');
-    const [castrated, setCastrated] = useState(false);
-    const [vaccinated, setVaccinated] = useState(false);
-    const [dewormed, setDewormed] = useState(false);
-    const [isSpecial, setIsSpecial] = useState(false);
-    const [specialDescription, setSpecialDescription] = useState('');
-
-    var reName, reDescription, reAnimalType, reAnimalSex, reAnimalSize, reAnimalAge, reUf, reCity
-
     async function handleAnnouncementRegister(e){
         document.getElementById('register').disabled=true;
         document.getElementById('cancel-register').disabled=true;
 
-        // TESTA VALIDAÇÕES
-        handleName();
-        handleDescription();
-        handleType();
-        handleSex();
-        handleSize();
-        handleAge();
-        handleCity();
-        handleUf();
+        handleUploadImg();
+        // // TESTA VALIDAÇÕES
+        // handleName();
+        // handleDescription();
+        // handleType();
+        // handleSex();
+        // handleSize();
+        // handleAge();
+        // handleCity();
+        // handleUf();
 
-        // PEGA OS DADOS DO STATE
-        const type = animalType;
-        const size = animalSize;
-        const sex = animalSex;
-        const age = animalAge;
-        var temperament = '';
-        for (var i = 0; i < items.length; i++) {
-            i< items.length-1 ? temperament = temperament + items[i].value + ', ' : temperament = temperament + items[i].value;
+        // // PEGA OS DADOS DO STATE
+        // const type = animalType;
+        // const size = animalSize;
+        // const sex = animalSex;
+        // const age = animalAge;
+        // var temperament = '';
+        // for (var i = 0; i < items.length; i++) {
+        //     i< items.length-1 ? temperament = temperament + items[i].value + ', ' : temperament = temperament + items[i].value;
+        // }
+        // const data = { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, userId};
+        // if(reName && reDescription && reAnimalType && reAnimalSex && reAnimalSize && reAnimalAge && reCity && reUf){
+        //     console.log("tentando inserir")
+        //     try{
+        //         const response = await api.post('/announcements', data);
+        //         if(response){
+        //             history.push('/myannouncements');
+        //         }
+        //     }catch(err){
+        //         alert(err);
+        //     }
+        // }
+        // console.log(data)
+    }
+
+    function handleUploadImg(){
+        for (var i=0; i<files.length; i++){
+            const data = new FormData() 
+            data.append('file', files[i])
+            const id = '02baf170-6575-4f5d-ac7c-f990538f5571';
+            insertPicture(id, data)
+            console.log(files[i])
         }
-        const data = { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, userId};
-        if(reName && reDescription && reAnimalType && reAnimalSex && reAnimalSize && reAnimalAge && reCity && reUf){
-            console.log("tentando inserir")
-            try{
-                const response = await api.post('/announcements', data);
-                if(response){
-                    history.push('/myannouncements');
-                }
-            }catch(err){
-                alert(err);
-            }
-        }
-        console.log(data)
+    }
+    async function insertPicture (id, data) {
+        await api.post(`/img/${id}`, data);
     }
 
     function handleIsSpecial(e){
         setChecked(!checked);
         setIsSpecial(e.target.checked);
     }
-
     function handleName(){
         if(name === undefined || name === null || name === ""){
             document.getElementById("msgname").innerHTML="<font color='red'>Esse campo é obrigatório</font>";
@@ -177,7 +190,6 @@ export default function ContentNewAnnouncement(){
             reName = true
         }
     }
-
     function handleDescription(){
         if(description === undefined || description === null || description === ""){
             document.getElementById("msgdescription").innerHTML="<font color='red'>Esse campo é obrigatório</font>";
@@ -190,7 +202,6 @@ export default function ContentNewAnnouncement(){
             reDescription = true
         }
     }
-
     function handleType(){
         if(animalType === undefined || animalType === null || animalType === ""){
             document.getElementById("msgAnimalType").innerHTML="<font color='red'>Esse campo é obrigatório</font>";   
@@ -201,7 +212,6 @@ export default function ContentNewAnnouncement(){
             reAnimalType = true
         }
     }
-
     function handleSex(){
         if(animalSex === undefined || animalSex === null || animalSex === ""){
             document.getElementById("msgAnimalSex").innerHTML="<font color='red'>Esse campo é obrigatório</font>";   
@@ -211,7 +221,6 @@ export default function ContentNewAnnouncement(){
             reAnimalSex = true
         }
     }
-
     function handleSize(){
         if(animalSize === undefined || animalSize === null || animalSize === ""){
             document.getElementById("msgAnimalSize").innerHTML="<font color='red'>Esse campo é obrigatório</font>";
@@ -221,7 +230,6 @@ export default function ContentNewAnnouncement(){
             reAnimalSize = true
         }
     }
-
     function handleAge(){
         if(animalAge === undefined || animalAge === null || animalAge === ""){
             document.getElementById("msgAnimalAge").innerHTML="<font color='red'>Esse campo é obrigatório</font>";
@@ -231,7 +239,6 @@ export default function ContentNewAnnouncement(){
             reAnimalAge = true
         }
     }
-
     function handleCity(){
         if(city === undefined || city === null || city === ""){
             document.getElementById("msgcity").innerHTML="<font color='red'>Esse campo é obrigatório</font>";
@@ -244,7 +251,6 @@ export default function ContentNewAnnouncement(){
             reCity = true
         }
     }
-
     function handleUf(){
         if(uf === undefined || uf === null || uf === ""){
             document.getElementById("msguf").innerHTML="<font color='red'>Esse campo é obrigatório</font>";
@@ -460,8 +466,16 @@ export default function ContentNewAnnouncement(){
                     <div className="form-new-announcement-item" id="form-new-announcement-item-pictures">
                         <label className="form-label-new-announcement">Fotos</label>
                         <p className="subtitle-seccion">Selecione até 5 fotos do seu bichinho</p>
-                        <label htmlFor="input-file-animal" className="button-charge-files"> <p><MdFileUpload/> CARREGAR ARQUIVOS</p> </label>
-                        <input type="file" id="input-file-animal"/>
+                        
+                        <form encType="multipart/form-data">
+                            <label htmlFor="input-file-animal" className="button-charge-files"> <p><MdFileUpload/> CARREGAR ARQUIVOS</p> </label>
+                            <input type="file" name="file" multiple id="input-file-animal" onChange={ (e) => setFiles(e.target.files) }/>
+                        </form>
+                        {files.length>0 && (
+                            <div className="files_message">
+                                {files.length} arquivos selecionados
+                            </div>
+                        )}
                     </div>
                     <button id="cancel-register" className="negative-purple">CANCELAR</button>
                     <button type="button" id="register" onClick={handleAnnouncementRegister} className="purple">CADASTRAR</button>
