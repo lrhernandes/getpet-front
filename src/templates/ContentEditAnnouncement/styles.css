@@ -1,5 +1,5 @@
 .adopted-button{
-    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .modal-adopt-not-grid{
@@ -8,6 +8,10 @@
     margin-bottom: 60px;
     height: 100%;
     position: relative;
+}
+
+.button-wrapper-insert-announcement button{
+    margin-right: 10px;
 }
 
 .modal-adopt-content-wrapper button{

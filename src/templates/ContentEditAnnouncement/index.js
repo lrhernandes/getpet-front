@@ -45,6 +45,7 @@ export default function ContentNewAnnouncement(){
     const [isSpecial, setIsSpecial] = useState(false);
     const [specialDescription, setSpecialDescription] = useState('');
     const [temperamentList, setTemperamentList] = useState([]);
+    const [changed, setChanged] = useState(false)
 
     useEffect(() => {
         function loadSelect(){
@@ -188,25 +189,31 @@ export default function ContentNewAnnouncement(){
         
         if (reName && reDescription && reSpecial){
             const data = { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, user};
-            try{
-                await api.put(`/announcements/settings/${id}/${user}`, data).then(()=>{
-                    if(getPicture()){
-                        deletePicture()
-                    }
-                    //console.log(getPicture());
-                    handleUploadImg().then(()=>{
-                        alert("Edições salvas :)");
-                        history.push(`/announcement/${id}`);
-                    }).catch((err)=>{
-                        alert("Algo deu errado na atualização das imagens :(");
-                        history.push(`/announcement/${id}`);
-                        console.log(err)
-                    })
-                });
-            }catch(err){
-                alert("Algo deu errado na atualização do anúncio :(");
-                history.push(`/announcement/${id}`);
-                console.log(err)
+            if(window.confirm("Tem certeza que deseja alterar esse anúncio?")){
+                try{
+                    await api.put(`/announcements/settings/${id}/${user}`, data).then(()=>{
+                        if(getPicture()){
+                            deletePicture()
+                        }
+                        if(changed){
+                            handleUploadImg().then(()=>{
+                                alert("Edições salvas :)");
+                                history.push(`/announcement/${id}`);
+                            })
+                        }
+                        else{
+                            alert("Edições salvas :)");
+                            history.push(`/announcement/${id}`);
+                        }
+                    });
+                }catch(err){
+                    alert("Algo deu errado na atualização do anúncio :(");
+                    history.push(`/announcement/${id}`);
+                    console.log(err)
+                }
+            }else{
+                alert("Descartando alterações");
+                history.push(`/myannouncements`);
             }
         } else {
             alert("Não foi possível editar anúncio :(");
@@ -572,6 +579,7 @@ export default function ContentNewAnnouncement(){
                         <label htmlFor="input-file-animal" className="button-charge-files"> <p><MdFileUpload/> CARREGAR ARQUIVOS</p> </label>
                         <input type="file" name="file" accept="image/png, image/jpeg, image/pjpeg" multiple id="input-file-animal" onChange={ (e) => {
                             setPic(e.target.files)
+                            setChanged(true)
                         }}/>
                     </form>
                     {pic.length>0 && (
@@ -583,9 +591,9 @@ export default function ContentNewAnnouncement(){
                 
                 
                 <div className="button-wrapper-insert-announcement">
-                    <button className="negative-purple" onClick={handleCancelEdit}>CANCELAR</button>
-                    <button type="button" onClick={handleAnnouncementEdit} className="purple">SALVAR</button>
+                <button className="negative-purple" onClick={handleCancelEdit}>CANCELAR</button>
                     <button type="button" onClick={handleAdopter} className="tomato adopted-button">PET FOI ADOTADO</button>
+                    <button type="button" onClick={handleAnnouncementEdit} className="purple">SALVAR</button>
                 </div>
 
             </div>
