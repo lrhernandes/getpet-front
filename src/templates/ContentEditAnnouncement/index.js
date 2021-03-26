@@ -15,12 +15,15 @@ import u from '../../assets/simbolo-sexual.svg'
 import ninho from '../../assets/ninho.svg'
 import pintinho from '../../assets/pintinho.svg'
 import galinha from '../../assets/galinha.svg'
+import Modal from '../../modal/AnnouncementAdopt'
 
 export default function ContentNewAnnouncement(){
     const history = useHistory();
     const user = localStorage.getItem('user-id');
+    const modalRef = React.useRef();
+
     let { id } = useParams();
-    var reName, reDescription, reSpecial, reUf, reCity
+    var reName, reDescription, reSpecial, reUf, reCity, rePhone
 
     const [items, setItems] = useState([]);
     const [itemsCpy, setItemsCpy] = useState([]);
@@ -28,6 +31,20 @@ export default function ContentNewAnnouncement(){
     const [checked, setChecked] = useState(false);
     const [pic, setPic] = useState([])
     const [announcement, setAnnouncement] = useState([]);
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [animalType, setAnimalType] = useState('');
+    const [animalSize, setAnimalSize] = useState('');
+    const [animalSex, setAnimalSex] = useState('');
+    const [animalAge, setAnimalAge] = useState('');
+    const [uf, setUF] = useState('');
+    const [city, setCity] = useState('');
+    const [castrated, setCastrated] = useState(false);
+    const [vaccinated, setVaccinated] = useState(false);
+    const [dewormed, setDewormed] = useState(false);
+    const [isSpecial, setIsSpecial] = useState(false);
+    const [specialDescription, setSpecialDescription] = useState('');
+    const [temperamentList, setTemperamentList] = useState([]);
 
     useEffect(() => {
         function loadSelect(){
@@ -91,6 +108,38 @@ export default function ContentNewAnnouncement(){
           getPictures();
     },[])
 
+    useEffect(()=>{
+        async function getData(){
+            const response = await api.get(`/announcement/${id}`);
+            const announcementData = response.data;
+
+            setName(announcementData.name);
+            setDescription(announcementData.description);
+            setCastrated(announcementData.castrated);
+            setVaccinated(announcementData.vaccinated);
+            setDewormed(announcementData.dewormed);
+            setIsSpecial(announcementData.isSpecial);
+            setChecked(announcementData.isSpecial)
+            setSpecialDescription(announcementData.specialDescription);
+            setUF(announcementData.uf);
+            setCity(announcementData.city);
+
+            var temperamento = [];
+            var [result] = announcementData.temperament.split(/\s*;\s*/);
+            var r = result.split(",")
+            r.forEach((element, index, array) => { temperamento.push({ id: index, value: element.trimStart()})});
+            setItems(temperamento);
+
+            document.getElementById(`${announcementData.type}`).checked = true;
+            document.getElementById(`${announcementData.sex}`).checked = true;
+            document.getElementById(`${announcementData.size}`).checked = true;
+            document.getElementById(`${announcementData.age}`).checked = true;
+
+            if(announcementData === null){ history.push('/exception')}else{ handlePermission(announcementData.userId); setAnnouncement(response.data);}
+        }
+        getData();
+    },[]);
+
     const handleKeyPress = (event) => {
         if(event.key === "Enter"){
             if(items.length < 9){    
@@ -120,21 +169,6 @@ export default function ContentNewAnnouncement(){
         }
         setItems(items)
     }
-
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [animalType, setAnimalType] = useState('');
-    const [animalSize, setAnimalSize] = useState('');
-    const [animalSex, setAnimalSex] = useState('');
-    const [animalAge, setAnimalAge] = useState('');
-    const [uf, setUF] = useState('');
-    const [city, setCity] = useState('');
-    const [castrated, setCastrated] = useState(false);
-    const [vaccinated, setVaccinated] = useState(false);
-    const [dewormed, setDewormed] = useState(false);
-    const [isSpecial, setIsSpecial] = useState(false);
-    const [specialDescription, setSpecialDescription] = useState('');
-    const [temperamentList, setTemperamentList] = useState([]);
 
     async function handleAnnouncementEdit(e){
         handleName();
@@ -182,38 +216,6 @@ export default function ContentNewAnnouncement(){
     function handleCancelEdit(){
         history.push(`/announcement/${id}`);
     }
-
-    useEffect(()=>{
-        async function getData(){
-            const response = await api.get(`/announcement/${id}`);
-            const announcementData = response.data;
-
-            setName(announcementData.name);
-            setDescription(announcementData.description);
-            setCastrated(announcementData.castrated);
-            setVaccinated(announcementData.vaccinated);
-            setDewormed(announcementData.dewormed);
-            setIsSpecial(announcementData.isSpecial);
-            setChecked(announcementData.isSpecial)
-            setSpecialDescription(announcementData.specialDescription);
-            setUF(announcementData.uf);
-            setCity(announcementData.city);
-
-            var temperamento = [];
-            var [result] = announcementData.temperament.split(/\s*;\s*/);
-            var r = result.split(",")
-            r.forEach((element, index, array) => { temperamento.push({ id: index, value: element.trimStart()})});
-            setItems(temperamento);
-
-            document.getElementById(`${announcementData.type}`).checked = true;
-            document.getElementById(`${announcementData.sex}`).checked = true;
-            document.getElementById(`${announcementData.size}`).checked = true;
-            document.getElementById(`${announcementData.age}`).checked = true;
-
-            if(announcementData === null){ history.push('/exception')}else{ handlePermission(announcementData.userId); setAnnouncement(response.data);}
-        }
-        getData();
-    },[]);
 
     function handlePermission(id){
         if(id != user){
@@ -295,22 +297,116 @@ export default function ContentNewAnnouncement(){
         }
     }
 
+    
+    const openModal = () => { modalRef.current.openModal() }
+    const closeModal = () => { modalRef.current.closeModal() }
+
+    async function handleAdopter(){
+        // openModal();
+        
+        const aName = prompt("Qual o nome do adotante? ")
+        const aPhone = prompt("Qual o telefone do adotante? ")
+        const aDescription = prompt("Insina outro dado para contato: ")
+
+        const data = {
+            adopterName: aName,
+            adopterPhone: aPhone,
+            adopterDescription: aDescription,
+            adopted: true,
+            available: false
+        }
+        console.log(user)
+        if(window.confirm("Tem certeza que deseja alterar esse anúncio?")){
+            await api.put(`/announcements/settings/${id}/${user}`, data).then(()=>{
+                alert("Edições salvas :)");
+                history.push(`/myannouncements`);
+            })
+        }else{
+            alert("Descartando alterações");
+            history.push(`/myannouncements`);
+        }
+    }
+
+    const [adopterName, setAdopterName] = useState('');
+    const [adopterPhone, setAdopterPhone] = useState('');
+    const [adopterDescription, setAdopterDescription] = useState('');
+
+    function validatePhone(value){
+        const n = value.replace(/\D/g, '')
+        setAdopterPhone(n)
+    }
+    function validateAdopterName(value){
+        setAdopterName(value.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ ]+/i, ''))
+    }
+
+    function handlePhone(){
+        const patternPhone =  /\d{13,13}/;
+        rePhone = patternPhone.test(String(adopterPhone).toLowerCase())
+        if(rePhone && adopterPhone != null && adopterPhone != ''){
+            document.getElementById("msgadopterphone").innerHTML="";
+            document.getElementById("adopterphone").style.border= '1px solid green';
+            rePhone = true
+        }else{
+            document.getElementById("msgadopterphone").innerHTML="<font color='red'>Telefone inválido</font>";
+            document.getElementById("adopterphone").style.border= '1px solid tomato';
+            document.getElementById("adopterphone").style.marginBottom= '5px';
+            rePhone = false
+        }
+    }
+
+    function handleAnnouncementAdopter(){
+        handlePhone();
+        if(rePhone && adopterName != ""){
+            console.log("Setar os coisa")
+        }
+    }
+
     return (
         <div className="content-new-announcement">    
+            <Modal ref={modalRef}>
+                <div onClick={closeModal} className="x-icon"><Link><MdClose size={20}/></Link></div>
+                    <div className="modal-adopt-not-grid">
+                        <div className="modal-adopt-wrapper-not-grid">
+                            <div className="modal-adopt-content-wrapper">
+                                <p className="modal-adopt-title"><strong>Salvar dados do adotante</strong></p>
+                                <p className="modal-adopt-subtitle">Salve os dados do adotante para registro</p>
+                                <div>
+                                    <div className="form-new-announcement-item">
+                                        <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Nome do adotante</label>
+                                        <input id="adoptername" className="default-input-new-announcement" type="text" placeholder="Nome" value={adopterName} onChange={e => validateAdopterName(e.target.value)}/>
+                                        <span className="validationError" id="msgadoptername"/>
+                                    </div>
+
+                                    <div className="form-new-announcement-item">
+                                        <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Número de telefone</label>
+                                        <input id="adopterphone" className="default-input-new-announcement" type="text" minlength="13" maxlength="13" placeholder="+00 (00) 00000-0000" value={adopterPhone} onChange={e => validatePhone(e.target.value)}/>
+                                        <span className="validationError" id="msgadopterphone"/>
+                                    </div>
+
+                                    <div className="form-new-announcement-item">
+                                        <label className="form-label-new-announcement">Descrição da adoção</label>
+                                        <textarea id="adopterdescription" value={adopterDescription} onChange={e => setAdopterDescription(e.target.value)}/>
+                                    </div>
+                                </div>
+                                
+                                <button className="negative-purple" onClick={closeModal}>CANCELAR</button>
+                                <button type="button" onClick={handleAnnouncementAdopter} className="purple">SALVAR</button>
+                            </div>
+                        </div>
+                    </div>
+            </Modal>
             <div className="default-page-content-wrapper">
                 <div className="form-new-announcement-item" id="form-new-announcement-item-name">
                     <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Nome do anúncio</label>
                     <input id="name" className="default-input-new-announcement" type="text" placeholder="Ex.: Pedrinho" value={name} onChange={e => setName(e.target.value)}/>
                     <span className="validationError" id="msgname"/>
                 </div>
-
                 <div className="form-new-announcement-item">
                     <label className="form-label-new-announcement"> <span className="span__obrigatory__item">*</span> Descrição do anúncio</label>
                     <p className="subtitle-seccion">Qual a história desse bichinho? quais são as suas características?</p>
                     <textarea id="description" placeholder="Ex.: Cachorro brincalhão resgatado do antigo tutor por maus tratos..." value={description} onChange={e => setDescription(e.target.value)}/>
                     <span className="validationError" id="msgdescription"/>
                 </div>
-
                 <div className="form-new-announcement-item" id="form-new-announcement-item-type">
                     <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Tipo</label>
                     <p className="subtitle-seccion">Que tipo de animal é esse?</p>
@@ -404,8 +500,7 @@ export default function ContentNewAnnouncement(){
                             </div>
                         </div>
                     </div>
-                </div>
-                
+                </div>                
                 <div className="form-new-announcement-item" id="form-new-announcement-item-health">
                     <label className="form-label-new-announcement">Histórico de saúde</label>
                     <p className="subtitle-seccion">Qual o estado de saúde do pet? descreva suas necessidades especiais na descrição do anúncio</p>
@@ -427,7 +522,6 @@ export default function ContentNewAnnouncement(){
                     </div>
                 </div>         
 
-                
                 {checked && (
                     <div>
                         <label className="form-new-announcement-description-special-label">Descreva aqui as necessidades especiais apresentadas pelo bichinho</label>
@@ -439,7 +533,6 @@ export default function ContentNewAnnouncement(){
                     <div>
                     </div>
                 )}
-
 
                 <div className="form-new-announcement-item" id="form-new-announcement-item-health">
                     <label className="form-label-new-announcement">Temperamento</label>
@@ -456,8 +549,7 @@ export default function ContentNewAnnouncement(){
                         </ul>
                     </div>
 
-                </div>
-                
+                </div>     
                 <div className="form-new-announcement-item" id="form-new-announcement-item-address">
                     <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Endereço</label>
                     <p className="subtitle-seccion">Onde o animal está alojado?</p>
@@ -488,10 +580,14 @@ export default function ContentNewAnnouncement(){
                         </div>
                     )}
                 </div>
+                
+                
                 <div className="button-wrapper-insert-announcement">
                     <button className="negative-purple" onClick={handleCancelEdit}>CANCELAR</button>
                     <button type="button" onClick={handleAnnouncementEdit} className="purple">SALVAR</button>
+                    <button type="button" onClick={handleAdopter} className="tomato adopted-button">PET FOI ADOTADO</button>
                 </div>
+
             </div>
             <div className="new-announcement-background-cat-wrapper">
                 <div className="new-announcement-background-cat"/>

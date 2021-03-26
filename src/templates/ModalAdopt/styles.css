@@ -6,6 +6,14 @@
     position: relative;
 }
 
+.modal-adopt-not-grid{
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 60px;
+    height: 100%;
+    position: relative;
+}
+
 .modal-adopt-image-wrapper{
     background-image: url('../../assets/cat1111.svg');
     background-size: 230px;

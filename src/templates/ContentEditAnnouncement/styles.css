@@ -1,4 +1,37 @@
+.adopted-button{
+    margin-left: 10px;
+}
 
+.modal-adopt-not-grid{
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 60px;
+    height: 100%;
+    position: relative;
+}
+
+.modal-adopt-content-wrapper button{
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.modal-adopt-content-wrapper .form-new-announcement-item{
+    margin: 0px !important;
+}
+
+.modal-adopt-content-wrapper .form-new-announcement-item textarea{
+    margin: 0px !important;
+}
+
+.modal-adopt-wrapper-not-grid{
+    
+    border-radius: 8px;
+    width: 100%;
+    padding: 20px;
+    height: 100%;
+    background-color: white;
+    box-shadow: 5px 10px 10px #e2e2e2;
+}
 
 #arredondar-first-radio{
     border-radius: 8px 0px 0px 8px;
