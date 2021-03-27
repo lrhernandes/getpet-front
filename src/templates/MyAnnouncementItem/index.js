@@ -28,15 +28,18 @@ export default function MyAnnouncementItem({ann, setAnnouncements}){
             }
         }
     }
+
     useEffect(()=>{
         async function handleGetImg(){
             const response = await api.get(`/img/${ann.id}`).then(response => response.data);
-            if(response.lenght>0){
+            if(response.length>0){
                 setUrl(response[0].url)
             }
+            console.log(response[0].url)
         }
         handleGetImg()
     },[])
+
     useEffect(()=>{
         function handleData(){
             switch (ann.age) {
