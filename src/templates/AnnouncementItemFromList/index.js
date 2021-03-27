@@ -14,6 +14,7 @@ export default function AnnouncementItemFromList({ann}){
     const [isFavorite, setIsFavorite] = useState(false)
     const [textAge, setTextAge] = useState('')
     const [textSize, setTextSize] = useState('')
+    const [url, setUrl] = useState('https://closekids.com.br/wp-content/uploads/2016/10/default-placeholder.png')
 
     useEffect(()=>{
         async function handleAllFavorites(){
@@ -25,8 +26,10 @@ export default function AnnouncementItemFromList({ann}){
             }
         }
         async function handleGetImg(){
-            const img = await api.get(`/img/${ann.id}`)
-            console.log(img)
+            const response = await api.get(`/img/${ann.id}`).then(response => response.data);
+            if(response.length>0){
+                setUrl(response[0].url)
+            }
         }
         handleAllFavorites();
         handleGetImg()
@@ -94,7 +97,7 @@ export default function AnnouncementItemFromList({ann}){
             {ann &&(
                 <Link onClick={handleOpenAnnouncement}>
                     <div className="announcement__item">
-                        <div className="announcement__item__picture">
+                        <div className="announcement__item__picture" style={{backgroundImage: `url(${url})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat"}}>
                         </div>
                         <div className="announcement___item___description">
                             <div className="name-and-fav">
