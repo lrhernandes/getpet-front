@@ -150,6 +150,8 @@ export default function ContentNewAnnouncement(){
         if(reName && reDescription && reAnimalType && reAnimalSex && reAnimalSize && reAnimalAge && reCity && reUf){
             try{
                 const response = await api.post('/announcements', data).then(response => response.data);
+                console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+                console.log(response)
                 if(response){
                     history.push('/myannouncements');
                     handleUploadImg(response);

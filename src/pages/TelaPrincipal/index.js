@@ -16,7 +16,7 @@ export default function TelaPrincipal(){
         if(localStorage.getItem('user-id') && localStorage.getItem('app-token')){
             history.push('/home');
         }
-        window.alert("Olá, banca! Como estou usando um host gratuito para o banco de dados, vou ter que atuaizar ele a cada semana, então no dia 01/04 e no dia 08/04 em alguma parte do dia o banco de dados vai ser zerado, o que porvavelmente vai gerar um pouquinho de instabilidade. Abraços!")
+        window.alert("Olá, banca! Como estou usando um host gratuito para o banco de dados, vou ter que atuaizar ele a cada semana, então no dia 01/04 e no dia 08/04 em alguma parte do dia o banco de dados vai ser zerado, o que provavelmente vai gerar um pouquinho de instabilidade. Abraços!")
         openModal();
     },[]);
     

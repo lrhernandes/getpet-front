@@ -191,17 +191,16 @@ export default function ContentNewAnnouncement(){
             const data = { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, user};
             if(window.confirm("Tem certeza que deseja alterar esse anúncio?")){
                 try{
-                    await api.put(`/announcements/settings/${id}/${user}`, data).then(()=>{
-                        if(getPicture()){
-                            deletePicture()
-                        }
+                    await api.put(`/announcements/settings/${id}/${user}`, data).then(async ()=>{
                         if(changed){
-                            handleUploadImg().then(()=>{
-                                alert("Edições salvas :)");
-                                history.push(`/announcement/${id}`);
-                            })
-                        }
-                        else{
+                            console.log("mudou!!")
+                            const response = await api.get(`/img/${id}`).then(response => response.data);
+                            if(response.length>0){
+                                deletePicture()
+                            }else{
+                                handleUploadImg()
+                            }
+                        }else{
                             alert("Edições salvas :)");
                             history.push(`/announcement/${id}`);
                         }
@@ -220,6 +219,26 @@ export default function ContentNewAnnouncement(){
         }
     }
 
+    async function deletePicture() {
+        await api.delete(`/img/${id}`).then(()=>{
+            handleUploadImg()
+        });
+    }
+    function handleUploadImg(){
+        console.log("dentro da funçãoooo")
+        for (var i=0; i<pic.length; i++){
+            console.log("um aqui")
+            const data = new FormData() 
+            data.append('file', pic[i])
+            insertPicture(id, data)
+            console.log(pic[i])
+        }
+        history.push(`/announcement/${id}`);
+    }
+    async function insertPicture(id,data) {
+        await api.post(`/img/${id}`, data);
+    }
+
     function handleCancelEdit(){
         history.push(`/announcement/${id}`);
     }
@@ -234,32 +253,8 @@ export default function ContentNewAnnouncement(){
         setChecked(!checked);
         setIsSpecial(e.target.checked);
     }
-
-    function handleUploadImg(){
-        for (var i=0; i<pic.length; i++){
-            console.log(pic)
-            const data = new FormData() 
-            data.append('file', pic[i])
-            insertPicture(id, data)
-            console.log(pic[i])
-        }
-    }
-    async function insertPicture(data) {
-        await api.post(`/img/${id}`, data);
-    }
     
-    async function deletePicture() {
-        await api.delete(`/img/${id}`);
-    }
 
-    async function getPicture(){
-        const response = await api.get(`/img/${id}`).then(response => response.data);
-        if(response.length>0){
-            return true;
-        }else{
-            return false;
-        }
-    }
 
     //VALIDAÇÕES
     function handleName(){

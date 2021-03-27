@@ -3,21 +3,13 @@ import './styles.css';
 
 import { IoIosFemale, IoIosMale, IoIosCalendar, IoMdHelpCircleOutline, IoIosResize } from "react-icons/io";
 import { MdFavoriteBorder, MdFavorite, MdLocationOn} from "react-icons/md";
-import {Link, useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import api from '../../services/api';
 
-import f from '../../assets/femea.svg'
-import m from '../../assets/fluido-de-genero.svg'
-import u from '../../assets/simbolo-sexual.svg'
-import ninho from '../../assets/ninho.svg'
-import pintinho from '../../assets/pintinho.svg'
-import galinha from '../../assets/galinha.svg'
-import regua from '../../assets/regua.svg'
 import { useEffect } from 'react';
 import { useState } from 'react';
 
 export default function AnnouncementItemFromList({ann}){
-    const history = useHistory();
     const user = localStorage.getItem('user-id');
     const [isFavorite, setIsFavorite] = useState(false)
     const [textAge, setTextAge] = useState('')
@@ -32,7 +24,12 @@ export default function AnnouncementItemFromList({ann}){
                 }
             }
         }
+        async function handleGetImg(){
+            const img = await api.get(`/img/${ann.id}`)
+            console.log(img)
+        }
         handleAllFavorites();
+        handleGetImg()
     },[ann])
 
     useEffect(()=>{
