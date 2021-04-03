@@ -22,7 +22,7 @@ const Notify = forwardRef(
     
         if (display){
             return ReactDOM.createPortal(
-            <div onClick={close} className="modal-wrapper">
+            <div className="modal-wrapper">
                 <div className="modal-backdrop">
                     <div className="modal-box">
                         {props.children}

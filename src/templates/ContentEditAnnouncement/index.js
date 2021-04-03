@@ -304,34 +304,13 @@ export default function ContentNewAnnouncement(){
     const closeModal = () => { modalRef.current.closeModal() }
 
     async function handleAdopter(){
-        // openModal();
-        
-        const aName = prompt("Qual o nome do adotante? ")
-        const aPhone = prompt("Qual o telefone do adotante? ")
-        const aDescription = prompt("Insina outro dado para contato: ")
-
-        const data = {
-            adopterName: aName,
-            adopterPhone: aPhone,
-            adopterDescription: aDescription,
-            adopted: true,
-            available: false
-        }
-        console.log(user)
-        if(window.confirm("Tem certeza que deseja alterar esse anúncio?")){
-            await api.put(`/announcements/settings/${id}/${user}`, data).then(()=>{
-                alert("Edições salvas :)");
-                history.push(`/myannouncements`);
-            })
-        }else{
-            alert("Descartando alterações");
-            history.push(`/myannouncements`);
-        }
+        openModal();
     }
 
     const [adopterName, setAdopterName] = useState('');
     const [adopterPhone, setAdopterPhone] = useState('');
     const [adopterDescription, setAdopterDescription] = useState('');
+    var reAdopterName, reAdopterPhone = false
 
     function validatePhone(value){
         const n = value.replace(/\D/g, '')
@@ -341,25 +320,58 @@ export default function ContentNewAnnouncement(){
         setAdopterName(value.replace(/[^A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ ]+/i, ''))
     }
 
-    function handlePhone(){
+    function handleAdopterPhone(){
         const patternPhone =  /\d{13,13}/;
-        rePhone = patternPhone.test(String(adopterPhone).toLowerCase())
-        if(rePhone && adopterPhone != null && adopterPhone != ''){
+        reAdopterPhone = patternPhone.test(String(adopterPhone).toLowerCase())
+        if(reAdopterPhone && adopterPhone != null && adopterPhone != ''){
             document.getElementById("msgadopterphone").innerHTML="";
             document.getElementById("adopterphone").style.border= '1px solid green';
-            rePhone = true
+            reAdopterPhone = true
         }else{
             document.getElementById("msgadopterphone").innerHTML="<font color='red'>Telefone inválido</font>";
             document.getElementById("adopterphone").style.border= '1px solid tomato';
             document.getElementById("adopterphone").style.marginBottom= '5px';
-            rePhone = false
+            reAdopterPhone = false
+        }
+    }
+    function handleAdopterName(){
+        if(adopterName === undefined || adopterName === null || adopterName === ""){
+            document.getElementById("msgadoptername").innerHTML="<font color='red'>Esse campo é obrigatório</font>";
+            document.getElementById("adoptername").style.border= '1px solid tomato';
+            document.getElementById("adoptername").style.marginBottom= '5px';
+            reAdopterName = false
+        }else{
+            document.getElementById("msgadoptername").innerHTML="";
+            document.getElementById("adoptername").style.border= '1px solid green';
+            reAdopterName = true
         }
     }
 
-    function handleAnnouncementAdopter(){
-        handlePhone();
-        if(rePhone && adopterName != ""){
-            console.log("Setar os coisa")
+    async function handleAnnouncementAdopter(){
+        handleAdopterPhone();
+        handleAdopterName();
+        if(reAdopterName !="" && reAdopterPhone != ""){
+            const data = {
+                adopterName: adopterName,
+                adopterPhone: adopterPhone,
+                adopterDescription: adopterDescription,
+                adopted: true,
+                available: false
+            }
+            console.log(user)
+            console.log(data)
+            if(window.confirm("Tem certeza que deseja alterar esse anúncio?")){
+                await api.put(`/announcements/settings/${id}/${user}`, data).then(()=>{
+                    alert("Edições salvas :)");
+                    history.push(`/myannouncements`);
+                })
+            }else{
+                alert("Descartando alterações");
+                setAdopterDescription(null);
+                setAdopterName(null);
+                setAdopterPhone(null);
+                closeModal()
+            }
         }
     }
 
