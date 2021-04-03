@@ -304,11 +304,11 @@
 }
 
 .default-page-content-wrapper .purple{
-    margin-left: 10px;
+    margin-left: 0px;
 }
 
 .form-new-announcement-item label .form-label-new-announcement {
-    border: 2px solid orange;
+    border: 2px solid rgb(119, 117, 113);
     color: red;
     margin-bottom: 10px;
 }
