@@ -76,18 +76,22 @@ export default function MyAnnouncementItem({ann, setAnnouncements}){
         history.push(`/announcement/${ann.id}`);
     }
     return (
-        <Link onClick={handleOpenAnnouncement}>
             <div className="announcement__item">
-                <div style={{backgroundImage: `url(${url})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat"}} className="announcement__item__picture" ></div>
+                <Link onClick={handleOpenAnnouncement}>
+                    <div style={{backgroundImage: `url(${url})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat"}} className="announcement__item__picture" ></div>
+                </Link>
                 <div className="announcement___item___description">
                     <div className="name-and-fav">
-                        <p className="description-announcement-item-from-list-name">{ann.name}</p>
+                        <Link onClick={handleOpenAnnouncement}>
+                            <p className="description-announcement-item-from-list-name">{ann.name}</p>
+                        </Link>
                         <div className="content-favorite-icon-announcement-item-from-list">
                         <Link onClick={handleDelete} title="Deletar anúncio"><MdDelete size={20} className="favorite-announcement-item-from-list-icon"/></Link>
                         </div>
                     </div>
-                    <p className="description-announcement-item-from-list-descript"> <MdLocationOn size={12}/> {ann.city}, {ann.uf}</p>
-                    <div className="announcement__item__description__animal__item-wrapper">
+                    <Link onClick={handleOpenAnnouncement}>
+                        <p className="description-announcement-item-from-list-descript"> <MdLocationOn size={12}/> {ann.city}, {ann.uf}</p>
+                        <div className="announcement__item__description__animal__item-wrapper">
                             {ann.sex === 'fem' && (
                                 <p className="announcement__item__description__animal-item"> <IoIosFemale/>Fêmea</p>
                             )}
@@ -100,10 +104,10 @@ export default function MyAnnouncementItem({ann, setAnnouncements}){
 
                             <p className="announcement__item__description__animal-item">  <IoIosCalendar/>{textAge}</p>
                             <p className="announcement__item__description__animal-item">  <IoIosResize/>{textSize}</p>
-                    </div>
+                        </div>
+                    </Link>
                 </div>
             </div>
-        </Link>
         // <Link onClick={handleOpenAnnouncement}>
         //     <div className="announcement-item-from-list">
         //         <div className="image-announcement-item-from-list">

@@ -284,7 +284,7 @@ export default function ContentNewAnnouncement(){
                         <div className="login-item-wrapper">
                             <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Descrição do anúncio</label>
                             <p className="subtitle-seccion">Qual a história desse bichinho? quais são as suas características?</p>
-                            <textarea id="description" placeholder="Ex.: Cachorro brincalhão resgatado do antigo tutor por maus tratos..." value={description} onChange={e => setDescription(e.target.value)}/>
+                            <textarea id="description"  maxLength="1100" placeholder="Ex.: Cachorro brincalhão resgatado do antigo tutor por maus tratos..." value={description} onChange={e => setDescription(e.target.value)}/>
                             <span className="validationError" id="msgdescription"/>
                         </div>
                     </div>

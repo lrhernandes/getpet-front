@@ -95,13 +95,16 @@ export default function AnnouncementItemFromList({ann}){
     return (
         <a>
             {ann &&(
-                <Link onClick={handleOpenAnnouncement}>
                     <div className="announcement__item">
-                        <div className="announcement__item__picture" style={{backgroundImage: `url(${url})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat"}}>
-                        </div>
+                        <Link onClick={handleOpenAnnouncement}>
+                            <div className="announcement__item__picture" style={{backgroundImage: `url(${url})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat"}}>
+                            </div>
+                        </Link>
                         <div className="announcement___item___description">
                             <div className="name-and-fav">
-                                <p className="description-announcement-item-from-list-name">{ann.name}</p>
+                                <Link onClick={handleOpenAnnouncement}>
+                                    <p className="description-announcement-item-from-list-name">{ann.name}</p>
+                                </Link>
                                 <div className="content-favorite-icon-announcement-item-from-list">
                                     {user && (
                                         <div>
@@ -114,24 +117,25 @@ export default function AnnouncementItemFromList({ann}){
                                     )}
                                 </div>
                             </div>
-                            <p className="description-announcement-item-from-list-descript"> <MdLocationOn size={12}/> {ann.city}, {ann.uf}</p>
-                            <div className="announcement__item__description__animal__item-wrapper">
-                                    {ann.sex === 'fem' && (
-                                        <p className="announcement__item__description__animal-item"> <IoIosFemale/>Fêmea</p>
-                                    )}
-                                    {ann.sex === 'mas' && (
-                                        <p className="announcement__item__description__animal-item"> <IoIosMale/>Macho</p>
-                                    )}
-                                    {ann.sex === 'notDefined' && (
-                                        <p className="announcement__item__description__animal-item"><IoMdHelpCircleOutline/>Indefinido</p>
-                                    )}
+                            <Link onClick={handleOpenAnnouncement}>
+                                <p className="description-announcement-item-from-list-descript"> <MdLocationOn size={12}/> {ann.city}, {ann.uf}</p>
+                                <div className="announcement__item__description__animal__item-wrapper">
+                                        {ann.sex === 'fem' && (
+                                            <p className="announcement__item__description__animal-item"> <IoIosFemale/>Fêmea</p>
+                                        )}
+                                        {ann.sex === 'mas' && (
+                                            <p className="announcement__item__description__animal-item"> <IoIosMale/>Macho</p>
+                                        )}
+                                        {ann.sex === 'notDefined' && (
+                                            <p className="announcement__item__description__animal-item"><IoMdHelpCircleOutline/>Indefinido</p>
+                                        )}
 
-                                    <p className="announcement__item__description__animal-item">  <IoIosCalendar/>{textAge}</p>
-                                    <p className="announcement__item__description__animal-item">  <IoIosResize/>{textSize}</p>
-                            </div>
+                                        <p className="announcement__item__description__animal-item">  <IoIosCalendar/>{textAge}</p>
+                                        <p className="announcement__item__description__animal-item">  <IoIosResize/>{textSize}</p>
+                                </div>
+                            </Link>
                         </div>
                     </div>
-                </Link>
             )}
             {/* {ann && (
                 <Link onClick={handleOpenAnnouncement}>
